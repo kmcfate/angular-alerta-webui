@@ -113,4 +113,14 @@ alertaApp.config(['config', '$authProvider',
       clientId: config.client_id,
       authorizationEndpoint: config.gitlab_url+'/oauth/authorize'
     });
+    $authProvider.oauth2({
+      name: 'oidc',
+      url: config.endpoint+'/auth/oidc',
+      redirectUri: window.location.origin,
+      clientId: config.client_id,
+      authorizationEndpoint: config.oidc_authurl,
+      scope: ['email'],
+      requiredUrlParams: ['scope'],
+      state: 'None'
+    });
 }]);
